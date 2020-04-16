@@ -1,6 +1,6 @@
 # AttractiveNet
 An End-to-End Deep Learning Tutorial in Python.<br>
-The Complete code is available on [GitHub](https://github.com/gustavz/attractiveNet) featuring an all-in-one [jupyter notebook](https://github.com/gustavz/attractiveNet/blob/master/train.ipynb).
+The Complete code is available on [GitHub](https://github.com/gustavz/AttractiveNet) featuring an all-in-one [jupyter notebook](https://github.com/gustavz/AttractiveNet/blob/master/train.ipynb).
 
 Learnables covered in this article:
 * Download, unzip and store public datasets
@@ -45,7 +45,7 @@ To complete the use-case we are having a look on how to run a `jupyter notebook`
 
 As this is a End-to-End tutorial our first step is to get the data, which means we need to download, unzip and store the images plus labels from the given database url which in this case lays on google drive `https://drive.google.com/uc?id=1w0TorBfTIqbquQVd6k3h_77ypnrvfGwf`. 
 
-<img width='100%' src='docs/database_structure.jpg'>
+<img width='100%' src='https://github.com/gustavz/AttractiveNet/blob/master/docs/database_structure.jpg'>
 
 As you can see in the screenshot above, the database has its individual format and structure, containing lots of additional stuff we don't need. 
 
@@ -305,7 +305,7 @@ def plot_metrics(history, model_name, stage):
     plt.savefig(f'{DOCS_DIR}metrics_stage_{stage}_{model_name}')
 ```
 which produces plots that look like the following and are furthermore saved locally under `docs/` folder.
-<img src='docs/metrics_stage_1_attractiveNet_mnv2.png'>
+<img src='https://github.com/gustavz/AttractiveNet/blob/master/docs/metrics_stage_1_attractiveNet_mnv2.png'>
 
 ### Step 7: Testing
 To test a desired model we first load it from file and then call `model.predict()` on it, passing the previously created `test_generator` object containing the test data which our model did not see yet during the training process.
@@ -313,8 +313,9 @@ To test a desired model we first load it from file and then call `model.predict(
 model = load_model(model_path)
 prediction = model.predict_generator(test_generator)
 ```
-When the prediction of the complete test dataset is finished we calculate the metrics Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) which are the most meaningfull and therefor the most often used metrics for regression tasks.
-> Excursus: Which Metric fits which ML Task
+When the prediction of the complete test dataset is finished we calculate the metrics Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) which are among the most meaningfull and therefor the most often used metrics for regression tasks.
+
+> Excursus: Choosing the right metrics to a specific machine learning task to be able to make meaningful statements about the quality of your model is an often underrated problem. [Here](https://cdn-images-1.medium.com/max/800/1*8VM2PELQ-oeM0O3ya7BIyQ.png) is a small overview about when to choose which metrics .
 
 Both `RMSE` and `MAE` are implemented in the `metrics` modul of `sklearn`.
 ```python
@@ -326,8 +327,9 @@ The model that was trained using the [notebook]() to this article and which is a
 RMSE: 0.28585716016204066
 MAE: 0.21198338088908802
 ```
-which is even slightly better than the results achieved by the original database authors with other models like `AlexNet', `ResNet-18` and `ResNeXt-50`.
-<img src='docs/original_results.png'>
+which is even slightly better than the results achieved by the original database authors with other models like `AlexNet`, `ResNet-18` and `ResNeXt-50`.
+
+<img src='https://github.com/gustavz/AttractiveNet/blob/master/docs/original_results.png'>
 
 ### Step 8: Live Inference
 To write a quick live inference script using our webcam as input we first need to load our model
@@ -383,6 +385,6 @@ If you closed that console already you can check for running notebooks with `jup
 
 ### Final Words
 
-No final words. Just get on GitHub, clone this [repository](https://github.com/gustavz/attractiveNet) and get started yourself.
+No final words. Just get on GitHub, clone this [repository](https://github.com/gustavz/AttractiveNet) and get started yourself.
 
 I hope you enjoyed it.
