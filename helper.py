@@ -43,8 +43,21 @@ def download_data():
         extract_zipfile()
         os.remove(ZFILE)
         
+def resize_with_pad(image, new_shape, padding_color = (255, 255, 255)) -> np.array:
+    original_shape = (image.shape[1], image.shape[0])
+    ratio = float(max(new_shape)) / max(original_shape)
+    new_size = tuple([int(x * ratio) for x in original_shape])
+    image = cv2.resize(image, new_size)
+    delta_w = new_shape[0] - new_size[0]
+    delta_h = new_shape[1] - new_size[1]
+    top, bottom = delta_h // 2, delta_h - (delta_h // 2)
+    left, right = delta_w // 2, delta_w - (delta_w // 2)
+    image = cv2.copyMakeBorder(image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=padding_color)
+
+    return image
+
 def preprocess_image(image,target_size):
-    return cv2.resize(cv2.cvtColor(image, cv2.COLOR_BGR2RGB),target_size) / .255
+    return resize_with_pad(cv2.cvtColor(image, cv2.COLOR_BGR2RGB),target_size) / .255
 
 def create_dataset(target_size):
     X = []
