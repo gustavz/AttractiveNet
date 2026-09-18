@@ -31,7 +31,7 @@ Finally besides the `tensorflow.keras` library that lifts the main part of our t
 ```
 zipfile36
 gdown
-glob2
+glob
 sklearn
 matplotlib
 alt_model_checkpoint
